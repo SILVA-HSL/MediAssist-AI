@@ -1,0 +1,13 @@
+PATIENT ADMISSION PROCEDURE
+
+All patients arriving at the hospital must first complete
+registration at the admissions desk.
+
+The patient's identification details, contact information,
+and emergency contact must be recorded.
+
+After registration, a medical officer performs an initial
+assessment.
+
+Patients requiring urgent medical attention should be
+immediately transferred to the emergency department.
