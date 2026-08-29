@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS beds (
+    id SERIAL PRIMARY KEY,
+    ward_type VARCHAR(50) NOT NULL,
+    bed_number VARCHAR(50) NOT NULL UNIQUE,
+    status VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS equipment (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    status VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS maintenance_tickets (
+    id SERIAL PRIMARY KEY,
+    equipment_name VARCHAR(100) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    issue TEXT NOT NULL,
+    status VARCHAR(30) NOT NULL DEFAULT 'open',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

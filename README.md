@@ -84,6 +84,38 @@ python `chat.py`
 
 Enter a hospital-related question when prompted. The assistant will retrieve relevant information and generate an answer using the Ollama model.
 
+## Current architecture
+
+```bash
+                          User
+                           │
+                           ▼
+                  ┌────────────────┐
+                  │  MediAssist    │
+                  │   AI Agent     │
+                  └───────┬────────┘
+                          │
+          ┌───────────────┼────────────────┐
+          │               │                │
+          ▼               ▼                ▼
+     RAG Tool        PostgreSQL Tools   Ticket Tool
+          │               │                │
+          ▼               ▼                ▼
+      ChromaDB          Neon DB          Neon DB
+          │               │                │
+          ▼               ▼                ▼
+   Hospital Docs    Beds/Equipment    Maintenance
+          │
+          └───────────────┬────────────────┘
+                          ▼
+                     Ollama LLM
+                          │
+                          ▼
+                    Final Response
+
+```
+
+
 ## Example Questions
 
 - What should healthcare staff do if a patient has a drug allergy?
