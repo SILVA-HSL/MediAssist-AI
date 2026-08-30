@@ -1,7 +1,7 @@
 from langchain_ollama import ChatOllama
 from langchain.agents import create_agent
 from tools.rag_tools import search_hospital_documents
-
+from agent import chat_with_agent
 from tools.hospital_tools import (
     get_available_beds,
     get_equipment_status,
@@ -167,6 +167,35 @@ agent = create_agent(
 
 messages = []
 
+# while True:
+
+#     question = input("\nYou: ")
+
+#     if question.lower() in ["exit", "quit"]:
+#         print("Goodbye!")
+#         break
+
+#     messages.append(
+#         {
+#             "role": "user",
+#             "content": question
+#         }
+#     )
+
+#     result = agent.invoke(
+#         {
+#             "messages": messages
+#         }
+#     )
+
+#     messages = result["messages"]
+
+#     print("\nMediAssist:")
+#     print(messages[-1].content)
+
+
+
+
 while True:
 
     question = input("\nYou: ")
@@ -175,21 +204,14 @@ while True:
         print("Goodbye!")
         break
 
-    messages.append(
-        {
-            "role": "user",
-            "content": question
-        }
-    )
+    try:
 
-    result = agent.invoke(
-        {
-            "messages": messages
-        }
-    )
+        result = chat_with_agent(question)
 
-    messages = result["messages"]
+        print("\nMediAssist:")
+        print(result["messages"][-1].content)
 
-    print("\nMediAssist:")
-    print(messages[-1].content)
+    except Exception as e:
 
+        print("\nError:")
+        print(str(e))
